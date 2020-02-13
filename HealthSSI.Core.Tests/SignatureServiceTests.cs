@@ -3,6 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using FluentAssertions;
+using HealthSSI.Data.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
@@ -24,8 +25,11 @@ namespace HealthSSI.Core.Tests
             // given
             var cryptoProvider = GetCryptoProvider();
             RSAParameters rsaPrivateKeyInfo = cryptoProvider.ExportParameters(true);
-            Patient patient = new Patient();
-            Document doc = new Document(DateTime.Now, patient.Id);
+            Patient patient = new Patient("joe", "smith", "joe.smith@gmail.com");
+
+            // simulate having an ID from the DB
+            patient.Id = 123;
+            Document doc = new Document(DateTime.Now, patient.Id.ToString());
             var message = doc.ToJson();
             string signedMessage = SignData(message, rsaPrivateKeyInfo);
             string publicKeyPem = ExportPublicKey(cryptoProvider);
@@ -45,8 +49,11 @@ namespace HealthSSI.Core.Tests
             // given
             var cryptoProvider = GetCryptoProvider();
             RSAParameters rsaPrivateKeyInfo = cryptoProvider.ExportParameters(true);
-            Patient patient = new Patient();
-            Document doc = new Document(DateTime.Now, patient.Id);
+            Patient patient = new Patient("jon", "smith", "jon.smith@gmail.com");
+
+            // simulate having an ID from the DB
+            patient.Id = 124;
+            Document doc = new Document(DateTime.Now, patient.Id.ToString());
             var message = doc.ToJson();
             string signedMessage = SignData(message, rsaPrivateKeyInfo);
 

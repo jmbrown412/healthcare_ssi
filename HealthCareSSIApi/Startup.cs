@@ -41,6 +41,9 @@ namespace HealthCareSSIApi
 
             services.AddScoped<IHospitalService, HospitalService>();
             services.AddScoped<IInsuraceCoService, InsuranceCoService>();
+            services.AddScoped<IPatientService, PatientService>();
+            services.AddScoped<IDocumentVerificationService, DocumentVerificationService>();
+            services.AddScoped<ISignatureService, SignatureService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

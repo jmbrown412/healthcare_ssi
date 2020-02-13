@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using HealthSSI.Data.Entities;
+using System.Security.Cryptography;
 
 namespace HealthSSI.Core
 {
@@ -24,7 +25,7 @@ namespace HealthSSI.Core
         /// <returns>DocumentValidationResult</returns>
         public DocumentValidationResult ValidateDocument(Patient patient, Document document, string signedMessage, string publicKey)
         {
-            var forPateient = document.PatientId == patient.Id;
+            var forPateient = document.PatientId == patient.Id.ToString();
             RSACryptoServiceProvider importedKey = _signatureService.ImportPublicKey(publicKey);
             var hospitalSigned = _signatureService.VerifySignature(document.ToJson(), signedMessage, importedKey.ExportParameters(false));
             return new DocumentValidationResult(forPateient && hospitalSigned, hospitalSigned, forPateient);

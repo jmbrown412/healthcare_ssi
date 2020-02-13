@@ -12,17 +12,22 @@ namespace HealthSSI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Add index and unique constraint on Name
+            // Add index and unique constraints
             modelBuilder.Entity<Hospital>()
                 .HasIndex(c => c.Name)
                 .IsUnique();
 
             modelBuilder.Entity<InsuranceCo>()
-            .HasIndex(c => c.Name)
-            .IsUnique();
+                .HasIndex(c => c.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<Patient>()
+                .HasIndex(c => c.Email)
+                .IsUnique();
         }
 
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<InsuranceCo> InsuranceCompanies { get; set; }
+        public DbSet<Patient> Patients { get; set; }
     }
 }

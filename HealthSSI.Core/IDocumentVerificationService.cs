@@ -1,4 +1,6 @@
-﻿namespace HealthSSI.Core
+﻿using HealthSSI.Data.Entities;
+
+namespace HealthSSI.Core
 {
     public interface IDocumentVerificationService
     {
