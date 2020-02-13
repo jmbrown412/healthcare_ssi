@@ -2,7 +2,7 @@
 
 namespace HealthSSI.Core
 {
-    public class Document
+    public class Document : BaseEntity
     {
         public DateTime Date { get; set; }
         public string PatientId { get; set; }
