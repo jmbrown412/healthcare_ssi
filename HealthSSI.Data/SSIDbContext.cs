@@ -16,8 +16,13 @@ namespace HealthSSI.Data
             modelBuilder.Entity<Hospital>()
                 .HasIndex(c => c.Name)
                 .IsUnique();
+
+            modelBuilder.Entity<InsuranceCo>()
+            .HasIndex(c => c.Name)
+            .IsUnique();
         }
 
         public DbSet<Hospital> Hospitals { get; set; }
+        public DbSet<InsuranceCo> InsuranceCompanies { get; set; }
     }
 }

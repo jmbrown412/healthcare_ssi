@@ -1,18 +1,17 @@
 ﻿using System.Threading.Tasks;
 using HealthSSI.Core;
 using HealthSSI.Core.Requests;
-using HealthSSI.Core.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthCareSSIApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HospitalController : ControllerBase
+    public class HospitalsController : BaseController
     {
         private readonly IHospitalService _hospitalService;
 
-        public HospitalController(
+        public HospitalsController(
             IHospitalService hospitalService
         )
         {
@@ -24,15 +23,6 @@ namespace HealthCareSSIApi.Controllers
         {
             var response = await _hospitalService.Create(request);
             return GetApiResponse(response);
-        }
-
-        private ActionResult GetApiResponse(BaseResponse response)
-        {
-            if (response.Success)
-            {
-                return Ok(response);
-            }
-            return BadRequest(response);
         }
     }
 }

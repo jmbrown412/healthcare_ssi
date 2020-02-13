@@ -4,20 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HealthSSI.Data.Entities
 {
-    [Table("Hospitals")]
-    public class Hospital
+    [Table("InsuranceCompanies")]
+    public class InsuranceCo
     {
-        public Hospital(string name, string publicKey)
+        public InsuranceCo(string name)
         {
             Name = name;
-            PublicKey = publicKey;
             CreatedAtUTC = DateTime.UtcNow;
         }
 
         [Key]
         public long Id { get; set; }
         public string Name { get; set; }
-        public string PublicKey { get; set; }
         public DateTime CreatedAtUTC { get; set; }
     }
 }
