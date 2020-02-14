@@ -29,12 +29,12 @@ and the SHA-512 hashing algo to prove hospital signatures.
  PROJECT STRUCTURE
 ------------
 
-HealthCareSSIApi - Web API around core biz logic
-HealthSSI.Core - Core biz logic using asymmetic keys and SHA512 hashing to provide signature proofs
-HealthSSI.Data - Data layer for Database (Currently MSSQL)
-HealthCareSSI.Tests.Common - Commons test lib for helper functions for things like getting a key pair
-HealthSSI.Core.Tests - Unit tests for signature and document proof checking
-HealthSSIApi.IntegrationTests - Integration tests testing end to end case of hospital document inssuance verification
+* HealthCareSSIApi - Web API around core biz logic
+* HealthSSI.Core - Core biz logic using asymmetic keys and SHA512 hashing to provide signature proofs
+* HealthSSI.Data - Data layer for Database (Currently MSSQL)
+* HealthCareSSI.Tests.Common - Commons test lib for helper functions for things like getting a key pair
+* HealthSSI.Core.Tests - Unit tests for signature and document proof checking
+* HealthSSIApi.IntegrationTests - Integration tests testing end to end case of hospital document inssuance verification
 
  REQUIREMENTS
 ------------
