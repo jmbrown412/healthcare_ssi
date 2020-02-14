@@ -13,7 +13,9 @@ namespace HealthCareSSIApi.IntegrationTests
     {
         private ApiClient GetApiClient()
         {
-            return new ApiClient("https://localhost:5001/");
+            // TODO - Switch URL to run local
+            //return new ApiClient("https://localhost:5001/");
+            return new ApiClient("http://healthssi-env.uxpb73mr6m.us-east-1.elasticbeanstalk.com/");
         }
 
         [TestMethod]
