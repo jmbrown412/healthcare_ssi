@@ -77,7 +77,7 @@ https://aws.amazon.com/visualstudio/
  TESTS
 ------------
 
-There are two test projects: 
+There are three test projects: 
 * HealthSSI.Core.Tests (unit tests)
 * HealthCareSSIApi.IntegrationTests (integration tests)
 * HealthCareSSI.Tests.Common (shared test lib)
