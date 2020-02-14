@@ -85,10 +85,11 @@ There are two test projects:
  NEXT STEPS
 ------------
 
-Use HSM for key 
-Add authentication to API
-Containerize project
-Setup CI/CD
-Add integration with Sovrin network
-Separate out into separate services if need be?
+* Use HSM for key 
+* Add authentication to API
+* Containerize project
+* Setup CI/CD
+* Add integration with Sovrin network
+* Separate out into separate services if need be?
+* Hash contents of Document and place on a blockchain
 ...
