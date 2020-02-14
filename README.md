@@ -7,6 +7,7 @@ CONTENTS OF THIS FILE
 ---------------------
    
  * Introduction
+ * Project Structure
  * Requirements
  * Installation
  * Configuration
@@ -24,6 +25,16 @@ can issue documents for patients and the insurance companies
 can trust that the documents were indeed signed by the hospital
 for the specific patient. This solution use assymetric keys
 and the SHA-512 hashing algo to prove hospital signatures.
+
+ PROJECT STRUCTURE
+------------
+
+HealthCareSSIApi - Web API around core biz logic
+HealthSSI.Core - Core biz logic using asymmetic keys and SHA512 hashing to provide signature proofs
+HealthSSI.Data - Data layer for Database (Currently MSSQL)
+HealthCareSSI.Tests.Common - Commons test lib for helper functions for things like getting a key pair
+HealthSSI.Core.Tests - Unit tests for signature and document proof checking
+HealthSSIApi.IntegrationTests - Integration tests testing end to end case of hospital document inssuance verification
 
  REQUIREMENTS
 ------------
