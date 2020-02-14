@@ -74,6 +74,7 @@ There are two test projects:
  NEXT STEPS
 ------------
 
+Use HSM for key 
 Add authentication to API
 Containerize project
 Setup CI/CD
