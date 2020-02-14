@@ -4,14 +4,16 @@ using HealthSSI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HealthCareSSIApi.Migrations
 {
     [DbContext(typeof(SSIDbContext))]
-    partial class SSIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200214140907_DocumentTables")]
+    partial class DocumentTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,9 +58,6 @@ namespace HealthCareSSIApi.Migrations
 
                     b.Property<int>("DocumentId")
                         .HasColumnType("int");
-
-                    b.Property<string>("SignedMesage")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

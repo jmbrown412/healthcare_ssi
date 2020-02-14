@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace HealthSSI.Core
+namespace HealthSSI.Data
 {
     public class BaseEntity
     {

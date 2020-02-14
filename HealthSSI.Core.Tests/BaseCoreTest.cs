@@ -13,12 +13,10 @@ namespace HealthSSI.Core.Tests
         /// In real scenario, key pairs will be provided by participants and they will secure their private key and provide their public keys
         /// </summary>
         /// <returns></returns>
-        protected RSACryptoServiceProvider GetCryptoProvider()
+        public RSACryptoServiceProvider GetCryptoProvider()
         {
             return new RSACryptoServiceProvider(2048);
         }
-
-
 
         /// <summary>
         /// Helper method for signing data with a private key. 
@@ -27,7 +25,7 @@ namespace HealthSSI.Core.Tests
         /// <param name="message"></param>
         /// <param name="privateKey"></param>
         /// <returns></returns>
-        protected string SignData(string message, RSAParameters privateKey)
+        public string SignData(string message, RSAParameters privateKey)
         {
             ASCIIEncoding byteConverter = new ASCIIEncoding();
 
@@ -137,7 +135,7 @@ namespace HealthSSI.Core.Tests
         /// </summary>
         /// <param name="csp"></param>
         /// <returns></returns>
-        protected string ExportPublicKey(RSACryptoServiceProvider csp)
+        public string ExportPublicKey(RSACryptoServiceProvider csp)
         {
             StringWriter outputStream = new StringWriter();
             var parameters = csp.ExportParameters(false);

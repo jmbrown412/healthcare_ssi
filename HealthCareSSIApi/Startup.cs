@@ -42,7 +42,7 @@ namespace HealthCareSSIApi
             services.AddScoped<IHospitalService, HospitalService>();
             services.AddScoped<IInsuraceCoService, InsuranceCoService>();
             services.AddScoped<IPatientService, PatientService>();
-            services.AddScoped<IDocumentVerificationService, DocumentVerificationService>();
+            services.AddScoped<IDocumentService, DocumentService>();
             services.AddScoped<ISignatureService, SignatureService>();
         }
 

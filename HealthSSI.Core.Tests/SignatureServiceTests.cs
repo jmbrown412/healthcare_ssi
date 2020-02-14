@@ -3,6 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using FluentAssertions;
+using HealthSSI.Data;
 using HealthSSI.Data.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -25,14 +26,15 @@ namespace HealthSSI.Core.Tests
             // given
             var cryptoProvider = GetCryptoProvider();
             RSAParameters rsaPrivateKeyInfo = cryptoProvider.ExportParameters(true);
+            string publicKeyPem = ExportPublicKey(cryptoProvider);
             Patient patient = new Patient("joe", "smith", "joe.smith@gmail.com");
 
             // simulate having an ID from the DB
-            patient.Id = 123;
-            Document doc = new Document(DateTime.Now, patient.Id.ToString());
-            var message = doc.ToJson();
+            Hospital hospital = new Hospital("Acme Hospital", publicKeyPem);
+            patient.Id = 124;
+            Document doc1 = new Document(patient.Id, hospital);
+            var message = doc1.ToJson();
             string signedMessage = SignData(message, rsaPrivateKeyInfo);
-            string publicKeyPem = ExportPublicKey(cryptoProvider);
 
             // when
             var signatureService = GetSignatureService();
@@ -49,12 +51,14 @@ namespace HealthSSI.Core.Tests
             // given
             var cryptoProvider = GetCryptoProvider();
             RSAParameters rsaPrivateKeyInfo = cryptoProvider.ExportParameters(true);
+            string publicKeyPem = ExportPublicKey(cryptoProvider);
             Patient patient = new Patient("jon", "smith", "jon.smith@gmail.com");
 
             // simulate having an ID from the DB
+            Hospital hospital = new Hospital("Acme Hospital", publicKeyPem);
             patient.Id = 124;
-            Document doc = new Document(DateTime.Now, patient.Id.ToString());
-            var message = doc.ToJson();
+            Document doc1 = new Document(patient.Id, hospital);
+            var message = doc1.ToJson();
             string signedMessage = SignData(message, rsaPrivateKeyInfo);
 
             // Keypair not signed with

@@ -10,6 +10,10 @@ namespace HealthSSI.Data
         {
         }
 
+        public SSIDbContext()
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Add index and unique constraints
@@ -29,5 +33,7 @@ namespace HealthSSI.Data
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<InsuranceCo> InsuranceCompanies { get; set; }
         public DbSet<Patient> Patients { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<DocumentSignedMessage> DocumentSignedMessages { get; set; }
     }
 }
