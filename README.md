@@ -12,6 +12,7 @@ CONTENTS OF THIS FILE
  * Configuration
  * Infrastructure
  * Tests
+ * Next steps
 
  INTRODUCTION
 ------------
@@ -39,6 +40,9 @@ HealthSSI requires the following:
 To install locally, do the following:
 * Clone the repo
 * Perform a Nuget restore of all packages
+* setup or use appsettings.Local.json for local dev
+* Set ASPNETCORE_ENVIRONMENT var with `$env:ASPNETCORE_ENVIRONMENT='Local'`
+* Create db local with command `Update-Database`
 
  CONFIGURATION
 ------------
@@ -53,7 +57,11 @@ which will instruct .Net core to read in the appropriate settings file.
 ------------
 
 HealthSSI is currently deployed in AWS using EBS and MS SQL on RDS. 
+http://healthssi-env.uxpb73mr6m.us-east-1.elasticbeanstalk.com/
+DB: healthssi-db.cvzjpppmueiv.us-east-1.rds.amazonaws.com
 The database schema is currently being maintained via code first migrations.
+Deployments currently being done via Visual Studio AWS Toolkit.
+https://aws.amazon.com/visualstudio/
 
  TESTS
 ------------
@@ -62,3 +70,13 @@ There are two test projects:
 * HealthSSI.Core.Tests (unit tests)
 * HealthCareSSIApi.IntegrationTests (integration tests)
 * HealthCareSSI.Tests.Common (shared test lib)
+
+ NEXT STEPS
+------------
+
+Add authentication to API
+Containerize project
+Setup CI/CD
+Add integration with Sovrin network
+Separate out into separate services if need be?
+...
