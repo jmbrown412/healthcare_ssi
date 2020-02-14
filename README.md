@@ -92,4 +92,3 @@ There are two test projects:
 * Add integration with Sovrin network
 * Separate out into separate services if need be?
 * Hash contents of Document and place on a blockchain
-...
