@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using FluentAssertions;
+using HealthCareSSI.Tests.Common;
 using HealthSSI.Data;
 using HealthSSI.Data.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,10 +11,7 @@ namespace HealthSSI.Core.Tests
     [TestClass]
     public class DocumentValidationTests : BaseCoreTest
     {
-        private IDocumentService GetDocVerificationService()
-        {
-            return new DocumentService(new SignatureService(), new SSIDbContext());
-        }
+
 
         [TestMethod]
         public void Checking_Message_That_Was_Signed_By_Hospital_For_A_Specific_Patient_Should_Return_Success()
@@ -33,7 +31,7 @@ namespace HealthSSI.Core.Tests
 
             // when
             var docValidatorService = GetDocVerificationService();
-            var result = docValidatorService.ValidateDocument(patient, doc, signedMessage, publicKeyPem);
+            var result = docValidatorService.ValidateDocument(patient.Id, doc, signedMessage, publicKeyPem);
 
             // then
             result.Success.Should().BeTrue();
@@ -65,9 +63,10 @@ namespace HealthSSI.Core.Tests
 
             // when
             var docValidatorService = GetDocVerificationService();
-            var result = docValidatorService.ValidateDocument(patient1, doc, signedMessage, publicKeyPem);
+            var result = docValidatorService.ValidateDocument(patient1.Id, doc, signedMessage, publicKeyPem);
 
             // then
+            result.Success.Should().BeFalse();
             result.HospitalSigned.Should().BeTrue();
             result.ForPatient.Should().BeFalse();
         }
@@ -99,9 +98,10 @@ namespace HealthSSI.Core.Tests
 
             // when
             var docValidatorService = GetDocVerificationService();
-            var result = docValidatorService.ValidateDocument(patient1, doc1, signedMessage1, publicKeyPem2);
+            var result = docValidatorService.ValidateDocument(patient1.Id, doc1, signedMessage1, publicKeyPem2);
 
             // then
+            result.Success.Should().BeFalse();
             result.HospitalSigned.Should().BeFalse();
             result.ForPatient.Should().BeTrue();
         }

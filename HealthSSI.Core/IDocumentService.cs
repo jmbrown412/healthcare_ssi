@@ -9,7 +9,8 @@ namespace HealthSSI.Core
     public interface IDocumentService
     {
         Task<CreateDocResponse> Create(CreateDocRequest request);
-        Task<Document> Get(int documentId);
-        DocumentValidationResult ValidateDocument(Patient patient, Document document, string signedMessage, string publicKey);
+        Task<SignDocResponse> SignDoc(SignDocRequest request);
+        Task<Document> Get(long documentId);
+        DocumentValidationResult ValidateDocument(long patientId, Document document, string signedMessage, string publicKey);
     }
 }

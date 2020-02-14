@@ -7,10 +7,13 @@ namespace HealthSSI.Core.Responses
 {
     public class CreatePatientResponse : BaseResponse
     {
+        public CreatePatientResponse() : base(true) { }
+
         public CreatePatientResponse(
             Patient patient
         ) : base(true)
         {
+            Id = patient.Id;
             FirstName = patient.FirstName;
             LastName = patient.LastName;
             Email = patient.Email;
@@ -20,7 +23,7 @@ namespace HealthSSI.Core.Responses
         public CreatePatientResponse(string error) : base(false, error)
         {
         }
-
+        public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

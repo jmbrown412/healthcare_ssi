@@ -5,6 +5,8 @@ namespace HealthSSI.Core.Responses
 {
     public class CreateInsuranceCoResponse : BaseResponse
     {
+        public CreateInsuranceCoResponse() : base(true) { }
+
         public CreateInsuranceCoResponse(
             InsuranceCo insuranceCo
         ) : base(true)

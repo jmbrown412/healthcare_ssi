@@ -1,13 +1,20 @@
-﻿using Newtonsoft.Json;
+﻿using HealthSSI.Core;
+using HealthSSI.Data;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace HealthSSI.Core.Tests
+namespace HealthCareSSI.Tests.Common
 {
     public class BaseCoreTest
     {
+        protected IDocumentService GetDocVerificationService()
+        {
+            return new DocumentService(new SignatureService(), new SSIDbContext());
+        }
+
         /// <summary>
         /// Helper method for getting public + private key pair for testing.
         /// In real scenario, key pairs will be provided by participants and they will secure their private key and provide their public keys

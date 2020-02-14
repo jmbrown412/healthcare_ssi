@@ -29,11 +29,11 @@ namespace HealthSSI.Core
             {
                 var hospital = await _dbContext.Hospitals.FirstOrDefaultAsync(h => h.Id == request.HospitalId);
                 var doc = new Document(request.PatientId, hospital);
-                var documentSignedMessage = new DocumentSignedMessage(doc, request.SignedMessage);
+                
                 _dbContext.Documents.Add(doc);
-                _dbContext.DocumentSignedMessages.Add(documentSignedMessage);
+                
                 await _dbContext.SaveChangesAsync();
-                return new CreateDocResponse(doc);
+                return new CreateDocResponse(doc, hospital);
             }
             catch (Exception ex)
             {
@@ -42,7 +42,24 @@ namespace HealthSSI.Core
             }
         }
 
-        public async Task<Document> Get(int documentId)
+        public async Task<SignDocResponse> SignDoc(SignDocRequest request)
+        {
+            try
+            {
+                var doc = await _dbContext.Documents.FirstOrDefaultAsync(d => d.Id == request.Document.Id);
+                var documentSignedMessage = new DocumentSignedMessage(doc, request.SignedMessage);
+                _dbContext.DocumentSignedMessages.Add(documentSignedMessage);
+                await _dbContext.SaveChangesAsync();
+                return new SignDocResponse(doc.Id, documentSignedMessage.Id);
+            }
+            catch (Exception ex)
+            {
+                // log details somewhere. i.e. inner exception, stacktrace, etc...
+                return new SignDocResponse("There was an error signing a Document");
+            }
+        }
+
+        public async Task<Document> Get(long documentId)
         {
             try
             {
@@ -63,9 +80,9 @@ namespace HealthSSI.Core
         /// <param name="signedMessage"></param>
         /// <param name="publicKey"></param>
         /// <returns>DocumentValidationResult</returns>
-        public DocumentValidationResult ValidateDocument(Patient patient, Document document, string signedMessage, string publicKey)
+        public DocumentValidationResult ValidateDocument(long patientId, Document document, string signedMessage, string publicKey)
         {
-            var forPateient = document.PatientId == patient.Id;
+            var forPateient = document.PatientId == patientId;
             RSACryptoServiceProvider importedKey = _signatureService.ImportPublicKey(publicKey);
             var hospitalSigned = _signatureService.VerifySignature(document.ToJson(), signedMessage, importedKey.ExportParameters(false));
             return new DocumentValidationResult(forPateient && hospitalSigned, hospitalSigned, forPateient);

@@ -9,7 +9,7 @@ namespace HealthSSI.Data
     public class Document : BaseEntity
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public DateTime CreatedAtUtc { get; set; }
         public virtual Patient Patient { get; set; }
         [ForeignKey("PatientId")]

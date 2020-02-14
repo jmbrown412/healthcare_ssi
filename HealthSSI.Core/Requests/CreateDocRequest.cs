@@ -1,18 +1,16 @@
-﻿namespace HealthSSI.Core.Requests
+﻿ namespace HealthSSI.Core.Requests
 {
     public class CreateDocRequest
     {
         public CreateDocRequest() { }
 
-        public CreateDocRequest(int patientId, int hospitalId, string signedMessage)
+        public CreateDocRequest(long patientId, long hospitalId)
         {
             PatientId = patientId;
             HospitalId = hospitalId;
-            SignedMessage = signedMessage;
         }
 
-        public int PatientId { get; set; }
-        public int HospitalId { get; set; } 
-        public string SignedMessage { get; set; }
+        public long PatientId { get; set; }
+        public long HospitalId { get; set; } 
     }
 }

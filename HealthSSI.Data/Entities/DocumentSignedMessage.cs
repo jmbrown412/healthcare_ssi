@@ -8,11 +8,11 @@ namespace HealthSSI.Data.Entities
     public class DocumentSignedMessage
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public DateTime CreatedAtUtc { get; set; }
         public virtual Document Document { get; set; }
         [ForeignKey("Document")]
-        public int DocumentId { get; set; }
+        public long DocumentId { get; set; }
         public string SignedMesage { get; set; }
 
         public DocumentSignedMessage() { }

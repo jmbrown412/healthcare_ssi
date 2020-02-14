@@ -3,6 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using FluentAssertions;
+using HealthCareSSI.Tests.Common;
 using HealthSSI.Data;
 using HealthSSI.Data.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

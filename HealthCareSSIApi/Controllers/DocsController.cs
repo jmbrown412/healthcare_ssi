@@ -22,5 +22,12 @@ namespace HealthCareSSIApi.Controllers
             var response = await _documentService.Create(request);
             return GetApiResponse(response);
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Get([FromQuery] long docId)
+        {
+            var doc = await _documentService.Get(docId);
+            return Ok(doc);
+        }
     }
 }

@@ -21,9 +21,9 @@ namespace HealthCareSSIApi.Migrations
 
             modelBuilder.Entity("HealthSSI.Data.Document", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAtUtc")
@@ -46,16 +46,16 @@ namespace HealthCareSSIApi.Migrations
 
             modelBuilder.Entity("HealthSSI.Data.Entities.DocumentSignedMessage", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DocumentId")
-                        .HasColumnType("int");
+                    b.Property<long>("DocumentId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("SignedMesage")
                         .HasColumnType("nvarchar(max)");
