@@ -48,11 +48,11 @@ HealthSSI requires the following:
 ------------
 
 To install locally, do the following:
-1 Clone the repo
-2 Perform a Nuget restore of all packages
-3 setup or use appsettings.Local.json for local dev
-4 Set ASPNETCORE_ENVIRONMENT var with `$env:ASPNETCORE_ENVIRONMENT='Local'`
-5 Create db local with command `Update-Database`
+1. Clone the repo
+2. Perform a Nuget restore of all packages
+3. setup or use appsettings.Local.json for local dev
+4. Set ASPNETCORE_ENVIRONMENT var with `$env:ASPNETCORE_ENVIRONMENT='Local'`
+5. Create db local with command `Update-Database`
 
  CONFIGURATION
 ------------
