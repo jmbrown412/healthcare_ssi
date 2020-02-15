@@ -1,5 +1,5 @@
 # healthcare_ssi
-Proof of concept for Self Sovereign Identity (SSI) involving Patients, Insurance Companies and Hospitals.
+ Present a way to verify that medical documents were in issued by the hospital and that it is issued for the family member making the claim. 
 
 HealthCare SSI
 
@@ -23,16 +23,15 @@ demonstrating the ability for hospitals, insurance companies
 and pateients to act in a decentralized manner where hospitals
 can issue documents for patients and the insurance companies 
 can trust that the documents were indeed signed by the hospital
-for the specific patient. This solution use assymetric keys
-and the SHA-512 hashing algo to prove hospital signatures.
+for the specific patient. This solution use digital signatures.
 
  PROJECT STRUCTURE
 ------------
 
-* HealthCareSSIApi - Web API around core biz logic
-* HealthSSI.Core - Core biz logic using asymmetic keys and SHA512 hashing to provide signature proofs
+* HealthCareSSIApi - Web API around core business logic
+* HealthSSI.Core - Core business logic using digital signatures
 * HealthSSI.Data - Data layer for Database (Currently MSSQL)
-* HealthCareSSI.Tests.Common - Commons test lib for helper functions for things like getting a key pair
+* HealthCareSSI.Tests.Common - Common test library for helper functions for things like getting a key pair
 * HealthSSI.Core.Tests - Unit tests for signature and document proof checking
 * HealthSSIApi.IntegrationTests - Integration tests testing end to end case of hospital document inssuance verification
 
@@ -49,11 +48,11 @@ HealthSSI requires the following:
 ------------
 
 To install locally, do the following:
-* Clone the repo
-* Perform a Nuget restore of all packages
-* setup or use appsettings.Local.json for local dev
-* Set ASPNETCORE_ENVIRONMENT var with `$env:ASPNETCORE_ENVIRONMENT='Local'`
-* Create db local with command `Update-Database`
+1 Clone the repo
+2 Perform a Nuget restore of all packages
+3 setup or use appsettings.Local.json for local dev
+4 Set ASPNETCORE_ENVIRONMENT var with `$env:ASPNETCORE_ENVIRONMENT='Local'`
+5 Create db local with command `Update-Database`
 
  CONFIGURATION
 ------------
@@ -67,12 +66,11 @@ which will instruct .Net core to read in the appropriate settings file.
  INFRASTRUCTURE
 ------------
 
-HealthSSI is currently deployed in AWS using EBS and MS SQL on RDS. 
-http://healthssi-env.uxpb73mr6m.us-east-1.elasticbeanstalk.com/
-DB: healthssi-db.cvzjpppmueiv.us-east-1.rds.amazonaws.com
-The database schema is currently being maintained via code first migrations.
-Deployments currently being done via Visual Studio AWS Toolkit.
-https://aws.amazon.com/visualstudio/
+* HealthSSI is currently deployed in AWS using EBS and MS SQL on RDS. http://healthssi-env.uxpb73mr6m.us-east-1.elasticbeanstalk.com/
+* DB: healthssi-db.cvzjpppmueiv.us-east-1.rds.amazonaws.com
+* The database schema is currently being maintained via code first migrations.
+* Deployments currently being done via Visual Studio AWS Toolkit.
+* https://aws.amazon.com/visualstudio/
 
  TESTS
 ------------
@@ -85,7 +83,7 @@ There are three test projects:
  NEXT STEPS
 ------------
 
-* Use HSM for key 
+* Use HSM for keys - AWS supports HSM which is FIPS 140-2 level 3 https://aws.amazon.com/cloudhsm/
 * Add authentication to API
 * Containerize project
 * Setup CI/CD
