@@ -83,7 +83,9 @@ There are three test projects:
  NEXT STEPS
 ------------
 
-* Use HSM for keys - AWS supports HSM which is FIPS 140-2 level 3 https://aws.amazon.com/cloudhsm/
+* Use HSM for keys - AWS supports HSM which is FIPS 140-2 level 3 
+* https://aws.amazon.com/cloudhsm/ 
+* https://en.wikipedia.org/wiki/FIPS_140-2
 * Add authentication to API
 * Containerize project
 * Setup CI/CD
