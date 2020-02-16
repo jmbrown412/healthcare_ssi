@@ -66,7 +66,7 @@ which will instruct .Net core to read in the appropriate settings file.
  INFRASTRUCTURE
 ------------
 
-* HealthSSI is currently deployed in AWS using EBS and MS SQL on RDS. http://healthssi-env.uxpb73mr6m.us-east-1.elasticbeanstalk.com/
+* HealthSSI is currently deployed in AWS using EBS and MS SQL on RDS. http://healthssi-env.uxpb73mr6m.us-east-1.elasticbeanstalk.com/swagger/index.html
 * DB: healthssi-db.cvzjpppmueiv.us-east-1.rds.amazonaws.com
 * The database schema is currently being maintained via code first migrations.
 * Deployments currently being done via Visual Studio AWS Toolkit.
